@@ -1,0 +1,43 @@
+#include<stdio.h>
+#define retab 8
+
+int main(void)
+{
+    int num,newtab,spot,c;
+
+    num = 0;
+    newtab = 0;
+
+    for(spot=1;(c=getchar())!=EOF;++spot)
+        if( c == ' ')
+        {
+            if((spot % retab) != 0)
+                ++num;
+            else
+            {
+                num = 0;
+                ++newtab;
+            }
+        }
+        else
+        {
+            for( ; newtab > 0 ; --newtab)
+                putchar('\t');
+            if( c == '\t')
+                num = 0;
+            else
+                for( ; num > 0; --num)
+                    putchar(' ');
+
+            putchar(c);
+
+            if(c == '\n')
+                spot = 0;
+            else if ( c == '\t')
+                spot = spot + ( retab - (spot -1) % retab) - 1;
+        }
+
+    return 0;
+}
+
+//Based on online examples with large chunks copied//
