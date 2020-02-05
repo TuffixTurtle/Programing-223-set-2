@@ -1,0 +1,39 @@
+#include<stdio.h>
+#define detab 8
+
+int main(void)
+{
+  int nb,pos,c;
+
+  num = 0;
+  spot = 1;
+
+  while((c=getchar())!=EOF)
+  {
+    if( c == '\t')
+    {
+      num = detab - (( spot - 1) % detab);
+
+      while( num > 0)
+      {
+        putchar('#');
+        ++spot;
+        --num;
+      }
+    }
+    else if( c == '\n')
+    {
+      putchar(c);
+      spot = 1;
+    }
+    else
+    {
+      putchar(c);
+      ++spot;
+    }
+  }
+
+  return 0;
+}
+
+//Based on online examples with large chunks copied//
